@@ -7,7 +7,10 @@
         android:title="Add Post"
         app:showAsAction="always" />
 
+<<<<<<< HEAD
     //Steven for tutorial 17
+=======
+>>>>>>> c22dcdb4ea5648c46506f3e1b76a9b5bb5114288
     <item android:id="@+id/action_settings"
         android:title="Settings"
         app:showAsAction="never" />
