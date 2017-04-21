@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Firebase.setAndroidContext(this);
 
+        //firebase code: add objects to database
         mRef = new Firebase("https://cs321app.firebaseio.com/Users");
 
         mAuth = FirebaseAuth.getInstance();
@@ -40,8 +41,6 @@ public class MainActivity extends AppCompatActivity {
         mvalueField = (EditText) findViewById(R.id.valueField);
         maddBtn = (Button) findViewById(R.id.addBtn);
         mKeyValue = (EditText) findViewById(R.id.keyValue);
-
-
 
 
         // login button

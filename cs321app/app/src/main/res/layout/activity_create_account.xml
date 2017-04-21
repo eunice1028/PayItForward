@@ -156,5 +156,16 @@
             android:layout_toEndOf="@+id/confirmPassword"
             android:text="Female"
             android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/submitBtn"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/lastnameField"
+            android:layout_alignParentBottom="true"
+            android:fontFamily="sans-serif"
+            android:text="Submit"
+            android:textColor="@color/colorAccent" />
     </RelativeLayout>
 </ScrollView>
