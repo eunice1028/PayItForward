@@ -53,9 +53,10 @@ dependencies {
     compile 'com.google.firebase:firebase-messaging:10.2.1'
     compile 'com.firebase:firebase-client-android:2.5.2'
     compile 'com.android.support:design:25.3.1'
+    compile 'com.google.android.gms:play-services-auth:10.2.1'
     testCompile 'junit:junit:4.12'
 }
 
 
-
+apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'

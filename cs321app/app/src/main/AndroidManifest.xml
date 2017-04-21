@@ -18,12 +18,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".CreateAccountActivity"
-            android:label="Create Account">
-
-        </activity>
+            android:label="Create Account" />
+        <activity
+            android:name=".AccountAccivity"
+            android:label="Home"/>
     </application>
 
 </manifest>
