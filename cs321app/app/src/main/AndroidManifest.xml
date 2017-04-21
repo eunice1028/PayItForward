@@ -18,21 +18,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".CreateAccountActivity"
-            android:label="Create Account"
             android:layout_gravity="center"
-            >
-
-        </activity>
-
-        <activity
-            android:name=".AccountAccivity"
-            android:label="Home">
-
-        </activity>
-
+            android:label="Create Account"></activity>
+        <activity android:name=".TimelineActivity"></activity>
     </application>
 
 </manifest>
