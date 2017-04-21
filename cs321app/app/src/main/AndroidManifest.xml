@@ -18,21 +18,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".CreateAccountActivity"
-            android:label="Create Account"
             android:layout_gravity="center"
-            >
-
-        </activity>
-
+            android:label="Create Account" />
+        // Pam added Timeline
         <activity
-            android:name=".AccountAccivity"
-            android:label="Home">
-
-        </activity>
-
+            android:name=".TimelineActivity"
+            android:label="Timeline" />
+        <activity android:name=".PostActivity"></activity>
     </application>
 
 </manifest>
