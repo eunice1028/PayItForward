@@ -41,17 +41,7 @@ public class MainActivity extends AppCompatActivity {
         maddBtn = (Button) findViewById(R.id.addBtn);
         mKeyValue = (EditText) findViewById(R.id.keyValue);
 
-        // Set up an AuthStateListener that responds to changes in the user's sign-in state
-        mAuthListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
 
-                // when there is a user active, he will be directed to the account activity page
-                if(firebaseAuth.getCurrentUser() != null) {
-                    startActivity(new Intent(MainActivity.this, AccountAccivity.class));
-                }
-            }
-        };
 
 
         // login button
@@ -88,7 +78,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Set up an AuthStateListener that responds to changes in the user's sign-in state
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
 
+                // when there is a user active, he will be directed to the account activity page
+                if(firebaseAuth.getCurrentUser() != null) {
+                    startActivity(new Intent(MainActivity.this, AccountAccivity.class));
+                }
+            }
+        };
 
 
         msignUpBtn = (Button) findViewById(R.id.signUpBtn);
