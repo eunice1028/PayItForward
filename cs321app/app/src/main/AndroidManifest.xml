@@ -22,7 +22,7 @@
             android:name=".CreateAccountActivity"
             android:layout_gravity="center"
             android:label="Create Account"></activity>
-
+        // Pam added Timeline
         <activity
             android:name=".TimelineActivity"
             android:label="Timeline"></activity>
