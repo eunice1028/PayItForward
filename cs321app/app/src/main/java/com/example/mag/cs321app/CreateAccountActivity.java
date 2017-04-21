@@ -68,7 +68,7 @@ public class CreateAccountActivity extends AppCompatActivity{
 
                 Toast.makeText(CreateAccountActivity.this,"Info saved in firebase", Toast.LENGTH_LONG).show();
                 //start timeline activity
-                //startActivity(new Intent(CreateAccountActivity.this, TimelineActivity.class));
+                startActivity(new Intent(CreateAccountActivity.this, TimelineActivity.class));
 
             }
         });
