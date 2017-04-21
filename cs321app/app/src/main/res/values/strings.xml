@@ -5,6 +5,9 @@
     <string name="value">Value</string>
     <string name="title_activity_login">Sign in</string>
     <string name="title_activity_create_account">CreateAccountActivity</string>
+<<<<<<< HEAD
+    <string name="title_activity_account">Home</string>
+=======
     <string name="large_text">
         "Material is the metaphor.\n\n"
 
@@ -95,5 +98,9 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="action_settings">Settings</string>
+<<<<<<< HEAD
     <string name="textview">TextView</string>
+=======
+>>>>>>> 15ceca7ac4e5e7849f41c6198266e451a5e705a0
+>>>>>>> b92481f624774f7ddaca56a3ff7b1831c4e80e33
 </resources>
