@@ -21,24 +21,16 @@
 
         <activity
             android:name=".CreateAccountActivity"
-<<<<<<< HEAD
             android:label="Create Account">
 
         </activity>
 
-=======
-<<<<<<< HEAD
-            android:label="Create Account" />
         <activity
             android:name=".AccountAccivity"
-            android:label="Home"/>
-=======
-            android:label="Create Account"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:label="Home">
 
         </activity>
->>>>>>> 15ceca7ac4e5e7849f41c6198266e451a5e705a0
->>>>>>> b92481f624774f7ddaca56a3ff7b1831c4e80e33
+
     </application>
 
 </manifest>
