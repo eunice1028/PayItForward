@@ -53,9 +53,9 @@ public class MainActivity extends AppCompatActivity {
                 String username = mKeyValue.getText().toString(); //username (key in tutorial)
                 Firebase mRefChild = mRef.child(username);
 
-                mRef.setValue(password);
+                mRefChild.setValue(password);
 
-
+/*
                 if(TextUtils.isEmpty(username) || TextUtils.isEmpty(password)){
 
                     Toast.makeText(MainActivity.this,"Fields are empty", Toast.LENGTH_LONG).show();
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                     });
                 }
 
-
+*/
 
 
             }
