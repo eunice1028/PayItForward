@@ -44,6 +44,7 @@ public class CreateAccountActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 //all info needed to be stored
+                startActivity(new Intent(CreateAccountActivity.this, TimelineActivity.class));
 
             }
         });
