@@ -21,8 +21,12 @@
         <activity
             android:name=".CreateAccountActivity"
             android:layout_gravity="center"
-            android:label="Create Account"></activity>
-        <activity android:name=".TimelineActivity"></activity>
+            android:label="Create Account" />
+        // Pam added Timeline
+        <activity
+            android:name=".TimelineActivity"
+            android:label="Timeline" />
+        <activity android:name=".PostActivity"></activity>
     </application>
 
 </manifest>
