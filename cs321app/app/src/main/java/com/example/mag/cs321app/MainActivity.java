@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Set up an AuthStateListener that responds to changes in the user's sign-in state
-        mAuthListener = new FirebaseAuth.AuthStateListener() {
+        /*mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
 
@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(new Intent(MainActivity.this, AccountAccivity.class));
                 }
             }
-        };
+        };*/
 
 
         msignUpBtn = (Button) findViewById(R.id.signUpBtn);
