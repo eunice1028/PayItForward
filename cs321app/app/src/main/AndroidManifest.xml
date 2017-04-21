@@ -21,7 +21,9 @@
 
         <activity
             android:name=".CreateAccountActivity"
-            android:label="Create Account">
+            android:label="Create Account"
+            android:layout_gravity="center"
+            >
 
         </activity>
 
