@@ -35,10 +35,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Firebase.setAndroidContext(this);
 
+        //firebase code: add objects to database
         mRef = new Firebase("https://cs321app.firebaseio.com/Users");
 
         mAuth = FirebaseAuth.getInstance();
 
+<<<<<<< HEAD
         mEmailFied = (EditText) findViewById(R.id.emailField);
         mlogInBtn = (Button) findViewById(R.id.loginBtn);
         mPasswordField = (EditText) findViewById(R.id.passwordField);
@@ -46,6 +48,15 @@ public class MainActivity extends AppCompatActivity {
 
         // Set up an AuthStateListener that responds to changes in the user's sign-in state
         mAuthListener = new FirebaseAuth.AuthStateListener() {
+=======
+        mvalueField = (EditText) findViewById(R.id.valueField);
+        maddBtn = (Button) findViewById(R.id.addBtn);
+        mKeyValue = (EditText) findViewById(R.id.keyValue);
+
+
+        // login button
+        maddBtn.setOnClickListener(new View.OnClickListener() {
+>>>>>>> 35b9e1ef12523b2d07e53d2cf232d985e364ae17
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
 
@@ -56,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "BYE.", Toast.LENGTH_LONG).show();
                 }
 
+<<<<<<< HEAD
                 else if(firebaseAuth.getCurrentUser() != null) {
 
                     Toast.makeText(MainActivity.this, "HELLO.", Toast.LENGTH_LONG).show();
@@ -63,16 +75,26 @@ public class MainActivity extends AppCompatActivity {
                     // create a new Intent and go to the Home page
                     // ***** AccountActivity page is changed
                     startActivity(new Intent(MainActivity.this, AccountAccivity.class));
+=======
+                mRefChild.setValue(password);
+
+/*
+                if(TextUtils.isEmpty(username) || TextUtils.isEmpty(password)){
+>>>>>>> 35b9e1ef12523b2d07e53d2cf232d985e364ae17
 
                     // sign out of the system
                     firebaseAuth.signOut();
 
                 }
 
+<<<<<<< HEAD
             }
         };
 
 
+=======
+*/
+>>>>>>> 35b9e1ef12523b2d07e53d2cf232d985e364ae17
 
         // login button
         mlogInBtn.setOnClickListener(new View.OnClickListener() {
@@ -84,7 +106,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+<<<<<<< HEAD
 
+=======
+        // Set up an AuthStateListener that responds to changes in the user's sign-in state
+        /*mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+
+                // when there is a user active, he will be directed to the account activity page
+                if(firebaseAuth.getCurrentUser() != null) {
+                    startActivity(new Intent(MainActivity.this, AccountAccivity.class));
+                }
+            }
+        };*/
+>>>>>>> 35b9e1ef12523b2d07e53d2cf232d985e364ae17
 
 
         msignUpBtn = (Button) findViewById(R.id.signUpBtn);
@@ -100,9 +136,16 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+<<<<<<< HEAD
     @Override
     protected void onStart() {
         super.onStart();
+=======
+
+    //@Override
+    //protected void onStart(){
+      //  super.onStart();
+>>>>>>> 35b9e1ef12523b2d07e53d2cf232d985e364ae17
 
         mAuth.addAuthStateListener(mAuthListener);
     }
