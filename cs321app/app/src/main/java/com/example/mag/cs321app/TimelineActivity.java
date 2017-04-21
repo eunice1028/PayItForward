@@ -3,6 +3,7 @@ package com.example.mag.cs321app;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 
 public class TimelineActivity extends AppCompatActivity {
 
@@ -18,5 +19,10 @@ public class TimelineActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.main_menu,menu);
 
         return super.onCreateOptionsMenu(menu);
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        return super.onOptionsItemSelected(item);
+
     }
 }
