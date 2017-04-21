@@ -9,11 +9,11 @@ public class TimelineActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.menu.activity_timeline);
+        setContentView(R.layout.timeline_main);
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.activity_timeline,menu);
+        getMenuInflater().inflate(R.menu.main_menu,menu);
 
         return super.onCreateOptionsMenu(menu);
     }

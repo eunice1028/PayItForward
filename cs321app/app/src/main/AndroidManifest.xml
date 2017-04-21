@@ -22,7 +22,10 @@
             android:name=".CreateAccountActivity"
             android:layout_gravity="center"
             android:label="Create Account"></activity>
-        <activity android:name=".TimelineActivity"></activity>
+
+        <activity
+            android:name=".TimelineActivity"
+            android:label="Timeline"></activity>
     </application>
 
 </manifest>
