@@ -21,14 +21,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        //Eunice added Create Account Page
         <activity
             android:name=".CreateAccountActivity"
             android:layout_gravity="center"
-            android:label="Create Account" />
+            android:label="Create Account"/>
+
         // Pam added Timeline
         <activity
             android:name=".TimelineActivity"
             android:label="Timeline" />
+
         <activity
             android:name=".PostActivity"
             android:label="Create a new post">

@@ -9,6 +9,7 @@
 
 
     <RelativeLayout
+        android:background="#FFFFFF"
         android:id="@+id/Relative"
         android:layout_width="match_parent"
         android:layout_height="520dp">
@@ -138,25 +139,6 @@
             android:text="Gender"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
-        <CheckBox
-            android:id="@+id/maleCheckbox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Male"
-            android:textSize="12sp"
-            android:layout_marginTop="12dp"
-            android:layout_below="@+id/gender"
-            android:layout_alignStart="@+id/firstName" />
-
-        <CheckBox
-            android:id="@+id/femaleCheckbox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/maleCheckbox"
-            android:layout_toEndOf="@+id/confirmPassword"
-            android:text="Female"
-            android:textSize="12sp" />
-
         <Button
             android:id="@+id/submitBtn"
             style="@style/Widget.AppCompat.Button.Borderless"
@@ -167,5 +149,36 @@
             android:fontFamily="sans-serif"
             android:text="Submit"
             android:textColor="@color/colorAccent" />
+
+        <RadioGroup
+            android:id="@+id/radioSex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/gender"
+            android:layout_alignStart="@+id/gender"
+            android:layout_toStartOf="@+id/submitBtn"
+            android:layout_alignEnd="@+id/submitBtn">
+
+            <RadioButton
+                android:id="@+id/MaleRadio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="100dp"
+                android:layout_weight="0.18"
+                android:text="Male" />
+
+
+            <RadioButton
+                android:id="@+id/FemaleRadio"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="52dp"
+                android:layout_marginRight="200dp"
+                android:layout_weight="0.18"
+                android:text="Female" />
+
+        </RadioGroup>
+
+
     </RelativeLayout>
 </ScrollView>

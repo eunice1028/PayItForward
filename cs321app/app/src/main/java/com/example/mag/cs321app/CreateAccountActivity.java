@@ -13,9 +13,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
 import com.firebase.client.Firebase;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.*;
+import android.app.*;
+import android.graphics.drawable.*;
+import android.graphics.*;
+
 
 public class CreateAccountActivity extends AppCompatActivity{
 
@@ -26,12 +27,16 @@ public class CreateAccountActivity extends AppCompatActivity{
     private EditText mconfirmPasswordField;
     private EditText mfirstnameField;
     private EditText mlastnameField;
+    private RadioGroup radioSex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
         Firebase.setAndroidContext(this);
+
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#000000"));
+        getSupportActionBar().setBackgroundDrawable(colorDrawable);
 
         //firebase code: add objects to database
         mRef = new Firebase("https://cs321app.firebaseio.com/Users");
@@ -40,6 +45,7 @@ public class CreateAccountActivity extends AppCompatActivity{
         mconfirmPasswordField = (EditText) findViewById(R.id.confirmPasswordField);
         mfirstnameField = (EditText) findViewById(R.id.firstnameField);
         mlastnameField = (EditText) findViewById(R.id.lastnameField);
+        radioSex = (RadioGroup) findViewById(R.id.radioSex);
 
         msubmitBtn = (Button) findViewById(R.id.submitBtn);
 
@@ -54,39 +60,40 @@ public class CreateAccountActivity extends AppCompatActivity{
                 String firstname = mfirstnameField.getText().toString();
                 String lastname = mlastnameField.getText().toString();
 
-                Firebase mRefChild = mRef.child(email);
+                if (password.equals(confirmedPassword)) {
 
-                //Setting each type of information as a new child under the User class
-                Firebase mRefPassword = mRefChild.child("Password");
-                mRefPassword.setValue(password);
+                    Firebase mRefChild = mRef.child(email);
 
-                Firebase mRefFirstname = mRefChild.child("First Name");
-                mRefFirstname.setValue(firstname);
+                    //Setting each type of information as a new child under the User class
+                    Firebase mRefPassword = mRefChild.child("Password");
+                    mRefPassword.setValue(password);
 
-                Firebase mRefLastname = mRefChild.child("Last Name");
-                mRefLastname.setValue(lastname);
+                    Firebase mRefFirstname = mRefChild.child("First Name");
+                    mRefFirstname.setValue(firstname);
 
-                Firebase mRefPoints = mRefChild.child("Points");
-                mRefPoints.setValue(10);
+                    Firebase mRefLastname = mRefChild.child("Last Name");
+                    mRefLastname.setValue(lastname);
 
-                Toast.makeText(CreateAccountActivity.this,"Info saved in firebase", Toast.LENGTH_LONG).show();
+                    Firebase mRefPoints = mRefChild.child("Points");
+                    mRefPoints.setValue(10);
 
-                //start timeline activity
-                startActivity(new Intent(CreateAccountActivity.this, TimelineActivity.class));
+                    int selectedID = radioSex.getCheckedRadioButtonId();
+                    String gender = ((RadioButton) findViewById(selectedID)).getText().toString();
 
+                    Firebase mRefGender = mRefChild.child("Gender");
+                    mRefGender.setValue(gender);
+
+                    Toast.makeText(CreateAccountActivity.this, "Info saved in firebase", Toast.LENGTH_SHORT).show();
+
+                    //start timeline activity
+                    startActivity(new Intent(CreateAccountActivity.this, TimelineActivity.class));
+
+                }
+                else {
+                    Toast.makeText(CreateAccountActivity.this, "Passwords don't match!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
-
-
     }
 }
-
-
-    // start signing in
-    //save info to firebase
-   /* String password = mvalueField.getText().toString(); //password (value in tutorial)
-    String username = mKeyValue.getText().toString(); //username (key in tutorial)
-    Firebase mRefChild = mRef.child(username);
-
-    mRef.setValue(password);*/
