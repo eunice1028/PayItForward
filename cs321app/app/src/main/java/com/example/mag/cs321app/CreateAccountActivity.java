@@ -13,10 +13,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
 import com.firebase.client.Firebase;
-import android.app.*;
-import android.graphics.drawable.*;
-import android.graphics.*;
-
 
 public class CreateAccountActivity extends AppCompatActivity{
 
@@ -34,9 +30,6 @@ public class CreateAccountActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
         Firebase.setAndroidContext(this);
-
-        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#000000"));
-        getSupportActionBar().setBackgroundDrawable(colorDrawable);
 
         //firebase code: add objects to database
         mRef = new Firebase("https://cs321app.firebaseio.com/Users");
