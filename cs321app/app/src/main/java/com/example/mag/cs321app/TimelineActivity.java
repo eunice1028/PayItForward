@@ -4,7 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.Menu;
-
+import android.content.Intent;
 
 public class TimelineActivity extends AppCompatActivity {
 
@@ -25,9 +25,9 @@ public class TimelineActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
-
+        // Pam if user clicks add button, move to new post page
         if(item.getItemId() == R.id.action_add){
-
+            startActivity(new Intent(TimelineActivity.this, PostActivity.class));
         }
 
         return super.onOptionsItemSelected(item);

@@ -26,7 +26,10 @@
         <activity
             android:name=".TimelineActivity"
             android:label="Timeline" />
-        <activity android:name=".PostActivity"></activity>
+        <activity
+            android:name=".PostActivity"
+            android:label="Create a new post">
+        </activity>
     </application>
 
 </manifest>
