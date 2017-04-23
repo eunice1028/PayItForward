@@ -9,6 +9,7 @@ import android.view.View;
 import android.net.Uri;
 
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -26,6 +27,7 @@ public class PostActivity extends AppCompatActivity {
     private EditText mPostDescription;
     private EditText mPostTime;
     private ImageButton mSelectImage;
+    private Uri mImageUri = null;
     private static final int GALLERY_REQUEST = 1;
 
     private Button mSubmitButton;
@@ -37,8 +39,15 @@ public class PostActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
+        mStorage = FirebaseStorage.getInstance().getReference();
 
         mSelectImage = (ImageButton) findViewById(R.id.imageSelect);
+        mPostTitle = (EditText) findViewById(R.id.post_title);
+        mPostDescription = (EditText) findViewById(R.id.post_description);
+        mPostDescription = (EditText) findViewById(R.id.post_time);
+        mSubmitButton = (Button) findViewById(R.id.post_button);
+        mProgress = new ProgressDialog(this);
+
         mSelectImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,6 +59,33 @@ public class PostActivity extends AppCompatActivity {
 
 
         });
+
+        mSubmitButton.setOnClickListener(new View.OnClickListener(){
+           @Override
+           public void onClick(View view){
+               startPosting();
+           }
+       });
+
+    }
+    private void startPosting(){
+        mProgress.setMessage("Posting to Blog...");
+        mProgress.show();
+        String title_val = mPostTitle.getText().toString().trim();
+        String desc_val = mPostDescription.getText().toString().trim();
+        String time_val = mPostTime.getText().toString().trim();
+
+        if(!TextUtils.isEmpty(title_val) && !TextUtils.isEmpty(desc_val) && mImageUri != null){
+
+            StorageReference filepath = mStorage.child("Blog_Images").child(mImageUri.getLastPathSegment());
+            filepath.putFile(mImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                    mProgress.dismiss();
+                }
+            });
+        }
     }
 
         @Override
@@ -57,51 +93,11 @@ public class PostActivity extends AppCompatActivity {
             super.onActivityResult(requestCode, resultCode, data);
 
             if (requestCode == GALLERY_REQUEST && resultCode == RESULT_OK) {
-                Uri imageUri = data.getData();
-                mSelectImage.setImageURI(imageUri);
+                Uri mImageUri = data.getData();
+                mSelectImage.setImageURI(mImageUri);
             }
         }
 
-
-//        // Firebase storage root directory
-//        mStorage = FirebaseStorage.getInstance().getReference();
-//        mDatabase = FirebaseDatabase.getInstance().getReference().child("Blog");
-//
-//        mPostTitle = (EditText) findViewById(R.id.post_title);
-//        mPostDescription = (EditText) findViewById(R.id.post_description);
-//        mPostDescription = (EditText) findViewById(R.id.post_time);
-//        mSubmitButton = (Button) findViewById(R.id.post_button);
-//        mProgress= new ProgressDialog(this);
-//
-//    mSubmitButton.setOnClickListener(new View.OnClickListener(){
-//    @Override
-//    public void onClick(View view){
-//        startPosting();
-//    }
-//        });
-//
-//    }
-//    private void startPosting(){
-//        mProgress.setMessage("Posting to Timeline...");
-//        mProgress.show();
-//        final String title_val = mPostTitle.getText().toString().trim();
-//        final String desc_val = mPostDescription.getText().toString().trim();
-//        final String time_val = mPostTime.getText().toString().trim();
-//
-//    if(!TextUtils.isEmpty(title_val) && !TextUtils.isEmpty(desc_val)){
-//        //StorageReference filepath = mStorage.child("")
-//            DatabaseReference newPost = mDatabase.push();
-//            newPost.child("title").setValue(title_val);
-//            newPost.child("description").setValue(desc_val);
-//            newPost.child("time").setValue(time_val);
-//
-//            mProgress.dismiss();
-//
-//    }
-
-
-
-        // must change read:True write:true on firebase
     }
 
 
