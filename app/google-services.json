@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "810311591806",
+    "firebase_url": "https://cs321app.firebaseio.com",
+    "project_id": "cs321app",
+    "storage_bucket": "cs321app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:810311591806:android:7ad59d034d35cf1e",
+        "android_client_info": {
+          "package_name": "com.example.mag.cs321app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "810311591806-on941h47giki4b2qeprj9ic55optb37j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mag.cs321app",
+            "certificate_hash": "d7b2da87bdd46a8fb5b83d761a2769a8591e1935"
+          }
+        },
+        {
+          "client_id": "810311591806-rhcmq844qtd4q1c5udkvfe5ppoanhhcu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCK8LF5UkDXl3oT3XQ1idrJoUUD28y3Ecw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "810311591806-rhcmq844qtd4q1c5udkvfe5ppoanhhcu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
