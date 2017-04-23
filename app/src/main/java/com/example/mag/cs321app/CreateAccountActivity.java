@@ -27,6 +27,7 @@ public class CreateAccountActivity extends AppCompatActivity{
     private EditText mfirstnameField;
     private EditText mlastnameField;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +57,6 @@ public class CreateAccountActivity extends AppCompatActivity{
 
                 Firebase mRefChild = mRef.child(email);
 
-                //Setting each type of information as a new child under the User class
                 Firebase mRefPassword = mRefChild.child("Password");
                 mRefPassword.setValue(password);
 
@@ -66,11 +66,7 @@ public class CreateAccountActivity extends AppCompatActivity{
                 Firebase mRefLastname = mRefChild.child("Last Name");
                 mRefLastname.setValue(lastname);
 
-                Firebase mRefPoints = mRefChild.child("Points");
-                mRefPoints.setValue(10);
-
                 Toast.makeText(CreateAccountActivity.this,"Info saved in firebase", Toast.LENGTH_LONG).show();
-
                 //start timeline activity
                 startActivity(new Intent(CreateAccountActivity.this, TimelineActivity.class));
 
