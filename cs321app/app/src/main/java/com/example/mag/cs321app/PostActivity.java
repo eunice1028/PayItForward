@@ -63,37 +63,55 @@ public class PostActivity extends AppCompatActivity {
         mSubmitButton.setOnClickListener(new View.OnClickListener(){
            @Override
            public void onClick(View view){
-               startPosting();
+               mProgress.setMessage("Posting to Blog...");
+               mProgress.show();
+
+               String title_val = mPostTitle.getText().toString().trim();
+               String desc_val = mPostDescription.getText().toString().trim();
+              // String time_val = mPostTime.getText().toString().trim();
+
+               if(!TextUtils.isEmpty(title_val) && !TextUtils.isEmpty(desc_val) && mImageUri != null){
+
+                   StorageReference filepath = mStorage.child("Blog_Images").child(mImageUri.getLastPathSegment());
+                   filepath.putFile(mImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                       @Override
+                       public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                           Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                           mProgress.dismiss();
+                       }
+                   });
+               }
+
            }
        });
 
     }
-    private void startPosting(){
-        mProgress.setMessage("Posting to Blog...");
-        mProgress.show();
-        String title_val = mPostTitle.getText().toString().trim();
-        String desc_val = mPostDescription.getText().toString().trim();
-        String time_val = mPostTime.getText().toString().trim();
-
-        if(!TextUtils.isEmpty(title_val) && !TextUtils.isEmpty(desc_val) && mImageUri != null){
-
-            StorageReference filepath = mStorage.child("Blog_Images").child(mImageUri.getLastPathSegment());
-            filepath.putFile(mImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                    mProgress.dismiss();
-                }
-            });
-        }
-    }
+//    private void startPosting(){
+//        mProgress.setMessage("Posting to Blog...");
+//        mProgress.show();
+//        String title_val = mPostTitle.getText().toString().trim();
+//        String desc_val = mPostDescription.getText().toString().trim();
+//        String time_val = mPostTime.getText().toString().trim();
+//
+//        if(!TextUtils.isEmpty(title_val) && !TextUtils.isEmpty(desc_val) && mImageUri != null){
+//
+//            StorageReference filepath = mStorage.child("Blog_Images").child(mImageUri.getLastPathSegment());
+//            filepath.putFile(mImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//                @Override
+//                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//                    Uri downloadUrl = taskSnapshot.getDownloadUrl();
+//                    mProgress.dismiss();
+//                }
+//            });
+//        }
+//    }
 
         @Override
         protected void onActivityResult(int requestCode, int resultCode, Intent data) {
             super.onActivityResult(requestCode, resultCode, data);
 
             if (requestCode == GALLERY_REQUEST && resultCode == RESULT_OK) {
-                Uri mImageUri = data.getData();
+                mImageUri = data.getData();
                 mSelectImage.setImageURI(mImageUri);
             }
         }
