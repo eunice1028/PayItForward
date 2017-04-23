@@ -37,6 +37,7 @@ public class PostActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
         mStorage = FirebaseStorage.getInstance().getReference();
@@ -64,18 +65,18 @@ public class PostActivity extends AppCompatActivity {
            @Override
            public void onClick(View view){
                mProgress.setMessage("Posting to Blog...");
-               mProgress.show();
 
                String title_val = mPostTitle.getText().toString().trim();
                String desc_val = mPostDescription.getText().toString().trim();
               // String time_val = mPostTime.getText().toString().trim();
 
                if(!TextUtils.isEmpty(title_val) && !TextUtils.isEmpty(desc_val) && mImageUri != null){
-
+                   mProgress.show();
                    StorageReference filepath = mStorage.child("Blog_Images").child(mImageUri.getLastPathSegment());
                    filepath.putFile(mImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                        @Override
                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                           @SuppressWarnings("VisibleForTests")
                            Uri downloadUrl = taskSnapshot.getDownloadUrl();
                            mProgress.dismiss();
                        }
