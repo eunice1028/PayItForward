@@ -14,7 +14,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.*;
 
-
+/**
+ * Created by maggieli on 4/19/17.
+ */
 
 public class MainActivity extends AppCompatActivity {
 
