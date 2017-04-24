@@ -39,17 +39,18 @@ public class PostActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
+
         mStorage = FirebaseStorage.getInstance().getReference();
 
-        mSelectImage = (ImageButton) findViewById(R.id.imageSelect);
         mPostTitle = (EditText) findViewById(R.id.post_title);
         mPostDescription = (EditText) findViewById(R.id.post_description);
-        mPostDescription = (EditText) findViewById(R.id.post_time);
+        mPostTime = (EditText) findViewById(R.id.post_time);
         mSubmitButton = (Button) findViewById(R.id.post_button);
         mProgress = new ProgressDialog(this);
+
+        mSelectImage = (ImageButton) findViewById(R.id.imageSelect);
 
         mSelectImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,74 +64,29 @@ public class PostActivity extends AppCompatActivity {
 
         });
 
-<<<<<<< HEAD
-        mSubmitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mProgress.setMessage("Posting to Blog...");
-                mProgress.show();
-
-//                String title_val = mPostTitle.getText().toString().trim();
-//                String desc_val = mPostDescription.getText().toString().trim();
-//                String time_val = mPostTime.getText().toString().trim();
-//
-//                if (!TextUtils.isEmpty(title_val) && !TextUtils.isEmpty(desc_val) && mImageUri != null) {
-//
-//                    StorageReference filepath = mStorage.child("Blog_Images").child(mImageUri.getLastPathSegment());
-//                    filepath.putFile(mImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//                        @Override
-//                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                            Uri downloadUrl = taskSnapshot.getDownloadUrl();
-//                            mProgress.dismiss();
-//                        }
-//                    });
-//                }
-//                mProgress.dismiss();
-                startActivity(new Intent(PostActivity.this, TimelineActivity.class));
-
-=======
         mSubmitButton.setOnClickListener(new View.OnClickListener(){
-           @Override
-           public void onClick(View view){
-               mProgress.setMessage("Posting to Blog...");
+            @Override
+            public void onClick(View view){
 
-               String title_val = mPostTitle.getText().toString().trim();
-               String desc_val = mPostDescription.getText().toString().trim();
-              // String time_val = mPostTime.getText().toString().trim();
-
-               if(!TextUtils.isEmpty(title_val) && !TextUtils.isEmpty(desc_val) && mImageUri != null){
-                   mProgress.show();
-                   StorageReference filepath = mStorage.child("Blog_Images").child(mImageUri.getLastPathSegment());
-                   filepath.putFile(mImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                       @Override
-                       public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                           @SuppressWarnings("VisibleForTests")
-                           Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                           mProgress.dismiss();
-                       }
-                   });
-               }
->>>>>>> b51bdead548135b09aa96c580196f2efbed29a9b
-
+                startPosting();
             }
-        });
 
+        });
     }
     private void startPosting(){
-//        mProgress.setMessage("Posting to Blog...");
-//        mProgress.show();
+
+        mProgress.setMessage("Posting to blog...");
+        mProgress.show();
         String title_val = mPostTitle.getText().toString().trim();
         String desc_val = mPostDescription.getText().toString().trim();
-        String time_val = mPostTime.getText().toString().trim();
 
-        if(!TextUtils.isEmpty(title_val) && !TextUtils.isEmpty(desc_val) && !TextUtils.isEmpty(time_val) && mImageUri != null){
+        if(!TextUtils.isEmpty(title_val) && !TextUtils.isEmpty(desc_val) && mImageUri != null){
 
             StorageReference filepath = mStorage.child("Blog_Images").child(mImageUri.getLastPathSegment());
             filepath.putFile(mImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
-                    @SuppressWarnings("Visible for tests") Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                    Uri downloadUrl = taskSnapshot.getDownloadUrl();
                     mProgress.dismiss();
                 }
             });
