@@ -9,6 +9,9 @@ import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.ImageView;
+import com.squareup.picasso.Picasso;
+import android.content.Context;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
@@ -50,6 +53,7 @@ public class TimelineActivity extends AppCompatActivity {
                 viewHolder.setTitle(model.getTitle());
                 viewHolder.setDesc(model.getDesc());
                 viewHolder.setTime(model.getTime());
+                viewHolder.setImage(getApplicationContext(), model.getImage());
 
             }
         };
@@ -89,6 +93,11 @@ public class TimelineActivity extends AppCompatActivity {
             TextView post_time = (TextView) mView.findViewById(R.id.post_time);
             post_time.setText(time);
 
+        }
+
+        public void setImage(Context ctx, String image){
+            ImageView post_image = (ImageView) mView.findViewById(R.id.post_image);
+            Picasso.with(ctx).load(image).into(post_image);
         }
     }
 
