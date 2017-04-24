@@ -39,6 +39,7 @@ public class PostActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
         mStorage = FirebaseStorage.getInstance().getReference();
@@ -62,6 +63,7 @@ public class PostActivity extends AppCompatActivity {
 
         });
 
+<<<<<<< HEAD
         mSubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -86,6 +88,29 @@ public class PostActivity extends AppCompatActivity {
 //                mProgress.dismiss();
                 startActivity(new Intent(PostActivity.this, TimelineActivity.class));
 
+=======
+        mSubmitButton.setOnClickListener(new View.OnClickListener(){
+           @Override
+           public void onClick(View view){
+               mProgress.setMessage("Posting to Blog...");
+
+               String title_val = mPostTitle.getText().toString().trim();
+               String desc_val = mPostDescription.getText().toString().trim();
+              // String time_val = mPostTime.getText().toString().trim();
+
+               if(!TextUtils.isEmpty(title_val) && !TextUtils.isEmpty(desc_val) && mImageUri != null){
+                   mProgress.show();
+                   StorageReference filepath = mStorage.child("Blog_Images").child(mImageUri.getLastPathSegment());
+                   filepath.putFile(mImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                       @Override
+                       public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                           @SuppressWarnings("VisibleForTests")
+                           Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                           mProgress.dismiss();
+                       }
+                   });
+               }
+>>>>>>> b51bdead548135b09aa96c580196f2efbed29a9b
 
             }
         });
