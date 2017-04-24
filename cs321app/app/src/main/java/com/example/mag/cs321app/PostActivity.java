@@ -26,7 +26,7 @@ import org.w3c.dom.Text;
 public class PostActivity extends AppCompatActivity {
     // Pam fields for PostActivity
     private EditText mPostTitle;
-    private EditText mPostDescription;
+    private EditText mPostDesc;
     private EditText mPostTime;
 
     private ImageButton mSelectImage;
@@ -47,7 +47,7 @@ public class PostActivity extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Blog");
 
         mPostTitle = (EditText) findViewById(R.id.post_title);
-        mPostDescription = (EditText) findViewById(R.id.post_description);
+        mPostDesc = (EditText) findViewById(R.id.post_desc);
         mPostTime = (EditText) findViewById(R.id.post_time);
 
         mSubmitButton = (Button) findViewById(R.id.post_button);
@@ -81,7 +81,7 @@ public class PostActivity extends AppCompatActivity {
         mProgress.setMessage("Posting to blog...");
         mProgress.show();
         final String title_val = mPostTitle.getText().toString().trim();
-        final String desc_val = mPostDescription.getText().toString().trim();
+        final String desc_val = mPostDesc.getText().toString().trim();
         final String time_val = mPostTime.getText().toString().trim();
 
 

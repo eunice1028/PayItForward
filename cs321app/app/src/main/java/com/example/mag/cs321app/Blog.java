@@ -5,16 +5,19 @@ package com.example.mag.cs321app;
  */
 
 public class Blog {
-    private String title, description, time;
+    private String title;
+    private String desc;
+    private String time;
 
     public Blog(){
 
     }
 
-    public Blog(String title, String description, String time) {
+    public Blog(String title, String desc, String time, String image) {
         this.title = title;
-        this.description = description;
+        this.desc = desc;
         this.time = time;
+        this.image = image;
     }
 
     public String getTitle() {
@@ -26,12 +29,12 @@ public class Blog {
         this.title = title;
     }
 
-    public String getDescription() {
-        return description;
+    public String getDesc() {
+        return desc;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
     public String getTime() {
@@ -41,4 +44,16 @@ public class Blog {
     public void setTime(String time) {
         this.time = time;
     }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    private String image;
+
+
 }
