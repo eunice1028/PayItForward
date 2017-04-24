@@ -27,7 +27,6 @@ public class PostActivity extends AppCompatActivity {
     // Pam fields for PostActivity
     private EditText mPostTitle;
     private EditText mPostDescription;
-    private EditText mPostTime;
     private ImageButton mSelectImage;
     private Uri mImageUri = null;
     private static final int GALLERY_REQUEST = 1;
@@ -43,10 +42,10 @@ public class PostActivity extends AppCompatActivity {
         setContentView(R.layout.activity_post);
 
         mStorage = FirebaseStorage.getInstance().getReference();
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Blog");
 
         mPostTitle = (EditText) findViewById(R.id.post_title);
         mPostDescription = (EditText) findViewById(R.id.post_description);
-        mPostTime = (EditText) findViewById(R.id.post_time);
         mSubmitButton = (Button) findViewById(R.id.post_button);
         mProgress = new ProgressDialog(this);
 
@@ -87,6 +86,8 @@ public class PostActivity extends AppCompatActivity {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     Uri downloadUrl = taskSnapshot.getDownloadUrl();
+
+                    //newPost.child();
                     mProgress.dismiss();
                 }
             });
