@@ -25,11 +25,11 @@ public class TimelineActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         // get layout from timeline_main
         setContentView(R.layout.timeline_main);
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("Blog");
-
-        mBlogList = (RecyclerView) findViewById(R.id.blog_list);
-        mBlogList.setHasFixedSize(true);
-        mBlogList.setLayoutManager(new LinearLayoutManager(this));
+//        mDatabase = FirebaseDatabase.getInstance().getReference().child("Blog");
+//
+//        mBlogList = (RecyclerView) findViewById(R.id.blog_list);
+//        mBlogList.setHasFixedSize(true);
+//        mBlogList.setLayoutManager(new LinearLayoutManager(this));
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
@@ -39,27 +39,27 @@ public class TimelineActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        FirebaseRecyclerAdapter<Blog,BlogViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Blog, BlogViewHolder>(
-            Blog.class,
-            R.layout.blog_row,
-            BlogViewHolder.class,
-            mDatabase
-        ){
-            @Override
-            protected void populateViewHolder(BlogViewHolder viewHolder, Blog model, int position) {
-                viewHolder.setTitle(model.getTitle());
-                viewHolder.setDesc(model.getDescription());
-                viewHolder.setTime(model.getTime());
-            }
-        };
-
-        mBlogList.setAdapter(firebaseRecyclerAdapter);
-
-    }
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//
+//        FirebaseRecyclerAdapter<Blog,BlogViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Blog, BlogViewHolder>(
+//            Blog.class,
+//            R.layout.blog_row,
+//            BlogViewHolder.class,
+//            mDatabase
+//        ){
+//            @Override
+//            protected void populateViewHolder(BlogViewHolder viewHolder, Blog model, int position) {
+//                viewHolder.setTitle(model.getTitle());
+//                viewHolder.setDesc(model.getDescription());
+//                viewHolder.setTime(model.getTime());
+//            }
+//        };
+//
+//        mBlogList.setAdapter(firebaseRecyclerAdapter);
+//
+//    }
 
     public static class BlogViewHolder extends RecyclerView.ViewHolder{
 
