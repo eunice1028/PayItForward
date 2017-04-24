@@ -27,6 +27,8 @@ public class PostActivity extends AppCompatActivity {
     // Pam fields for PostActivity
     private EditText mPostTitle;
     private EditText mPostDescription;
+    private EditText mPostTime;
+
     private ImageButton mSelectImage;
     private Uri mImageUri = null;
     private static final int GALLERY_REQUEST = 1;
@@ -46,6 +48,8 @@ public class PostActivity extends AppCompatActivity {
 
         mPostTitle = (EditText) findViewById(R.id.post_title);
         mPostDescription = (EditText) findViewById(R.id.post_description);
+        mPostTime = (EditText) findViewById(R.id.post_time);
+
         mSubmitButton = (Button) findViewById(R.id.post_button);
         mProgress = new ProgressDialog(this);
 
@@ -76,10 +80,12 @@ public class PostActivity extends AppCompatActivity {
 
         mProgress.setMessage("Posting to blog...");
         mProgress.show();
-        String title_val = mPostTitle.getText().toString().trim();
-        String desc_val = mPostDescription.getText().toString().trim();
+        final String title_val = mPostTitle.getText().toString().trim();
+        final String desc_val = mPostDescription.getText().toString().trim();
+        final String time_val = mPostTime.getText().toString().trim();
 
-        if(!TextUtils.isEmpty(title_val) && !TextUtils.isEmpty(desc_val) && mImageUri != null){
+
+        if(!TextUtils.isEmpty(title_val) && !TextUtils.isEmpty(desc_val) && !TextUtils.isEmpty(time_val) && mImageUri != null){
 
             StorageReference filepath = mStorage.child("Blog_Images").child(mImageUri.getLastPathSegment());
             filepath.putFile(mImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -87,8 +93,16 @@ public class PostActivity extends AppCompatActivity {
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     Uri downloadUrl = taskSnapshot.getDownloadUrl();
 
-                    //newPost.child();
+                    DatabaseReference newPost = mDatabase.push();
+
+                    newPost.child("title").setValue(title_val);
+                    newPost.child("desc").setValue(desc_val);
+                    newPost.child("time").setValue(time_val);
+
                     mProgress.dismiss();
+
+                    startActivity(new Intent(PostActivity.this, TimelineActivity.class));
+
                 }
             });
         }
