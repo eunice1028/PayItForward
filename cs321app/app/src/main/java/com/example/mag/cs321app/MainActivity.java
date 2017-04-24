@@ -14,7 +14,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.*;
 
-
+/**
+ * Created by maggieli on 4/19/17.
+ */
 
 public class MainActivity extends AppCompatActivity {
 
@@ -54,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 if (firebaseAuth.getCurrentUser() == null) {
 
                     // This line is for testing purpose, can be deleted later
-                   // Toast.makeText(MainActivity.this, "BYE.", Toast.LENGTH_LONG).show();
+                    // Toast.makeText(MainActivity.this, "BYE.", Toast.LENGTH_LONG).show();
                 } else if (firebaseAuth.getCurrentUser() != null) {
 
                     Toast.makeText(MainActivity.this, "HELLO.", Toast.LENGTH_LONG).show();
