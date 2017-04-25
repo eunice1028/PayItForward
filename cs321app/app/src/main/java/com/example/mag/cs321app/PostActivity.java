@@ -27,6 +27,7 @@ public class PostActivity extends AppCompatActivity {
     private EditText mPostTitle;
     private EditText mPostDesc;
     private EditText mPostTime;
+    private EditText mPostPoints;
 
     private ImageButton mSelectImage;
     private Uri mImageUri = null;
@@ -48,6 +49,8 @@ public class PostActivity extends AppCompatActivity {
         mPostTitle = (EditText) findViewById(R.id.post_title);
         mPostDesc = (EditText) findViewById(R.id.post_desc);
         mPostTime = (EditText) findViewById(R.id.post_time);
+        mPostPoints = (EditText) findViewById(R.id.post_points);
+
 
         mSubmitButton = (Button) findViewById(R.id.post_button);
         mProgress = new ProgressDialog(this);
@@ -80,9 +83,11 @@ public class PostActivity extends AppCompatActivity {
         final String title_val = mPostTitle.getText().toString().trim();
         final String desc_val = mPostDesc.getText().toString().trim();
         final String time_val = mPostTime.getText().toString().trim();
+        final String points_val = mPostPoints.getText().toString().trim();
 
 
-        if(!TextUtils.isEmpty(title_val) && !TextUtils.isEmpty(desc_val) && !TextUtils.isEmpty(time_val)){
+
+        if(!TextUtils.isEmpty(title_val) && !TextUtils.isEmpty(desc_val) && !TextUtils.isEmpty(time_val) && !TextUtils.isEmpty(points_val) && mImageUri!= null){
             mProgress.show();
 
             StorageReference filepath = mStorage.child("Blog_Images").child(mImageUri.getLastPathSegment());
@@ -96,6 +101,8 @@ public class PostActivity extends AppCompatActivity {
                     newPost.child("title").setValue(title_val);
                     newPost.child("desc").setValue(desc_val);
                     newPost.child("time").setValue(time_val);
+                    newPost.child("points").setValue(points_val);
+
                     newPost.child("image").setValue(downloadUrl.toString());
 
                     mProgress.dismiss();

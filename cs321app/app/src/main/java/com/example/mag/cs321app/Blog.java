@@ -8,6 +8,7 @@ public class Blog {
     private String title;
     private String desc;
     private String time;
+    private String points;
     private String image;
 
 
@@ -15,11 +16,21 @@ public class Blog {
 
     }
 
-    public Blog(String title, String desc, String time, String image) {
+
+    public Blog(String title, String desc, String time, String points, String image) {
         this.title = title;
         this.desc = desc;
         this.time = time;
+        this.points = points;
         this.image = image;
+    }
+
+    public String getPoints() {
+        return points;
+    }
+
+    public void setPoints(String points) {
+        this.points = points;
     }
 
     public String getTitle() {
