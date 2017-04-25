@@ -23,9 +23,5 @@ public class AccountPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.account_page);
 
-<<<<<<< HEAD
-=======
-
->>>>>>> c0ef9903c2142922d63e8e5239ee524240236132
     }
 }
