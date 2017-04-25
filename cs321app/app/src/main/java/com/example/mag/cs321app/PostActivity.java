@@ -76,7 +76,6 @@ public class PostActivity extends AppCompatActivity {
     private void startPosting(){
 
         mProgress.setMessage("Posting to timeline...");
-        mProgress.show();
 
         final String title_val = mPostTitle.getText().toString().trim();
         final String desc_val = mPostDesc.getText().toString().trim();
@@ -84,17 +83,20 @@ public class PostActivity extends AppCompatActivity {
 
 
         if(!TextUtils.isEmpty(title_val) && !TextUtils.isEmpty(desc_val) && !TextUtils.isEmpty(time_val)){
+            mProgress.show();
+
             StorageReference filepath = mStorage.child("Blog_Images").child(mImageUri.getLastPathSegment());
             filepath.putFile(mImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                    @SuppressWarnings("VisibleForTests") Uri downloadUrl = taskSnapshot.getDownloadUrl();
 
                     DatabaseReference newPost = mDatabase.push();
 
                     newPost.child("title").setValue(title_val);
                     newPost.child("desc").setValue(desc_val);
                     newPost.child("time").setValue(time_val);
+                    newPost.child("image").setValue(downloadUrl.toString());
 
                     mProgress.dismiss();
 

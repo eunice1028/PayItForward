@@ -33,7 +33,11 @@ public class TimelineActivity extends AppCompatActivity {
 
         mBlogList = (RecyclerView) findViewById(R.id.blog_list);
         mBlogList.setHasFixedSize(true);
-        mBlogList.setLayoutManager(new LinearLayoutManager(this));
+        // view from newest to oldest
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        llm.setReverseLayout(true);
+        llm.setStackFromEnd(true);
+        mBlogList.setLayoutManager(llm);
     }
 
     @Override
@@ -96,8 +100,8 @@ public class TimelineActivity extends AppCompatActivity {
         }
 
         public void setImage(Context ctx, String image){
-            ImageView post_image = (ImageView) mView.findViewById(R.id.post_image);
-            Picasso.with(ctx).load(image).into(post_image);
+            ImageView postimage = (ImageView) mView.findViewById(R.id.post_image);
+            Picasso.with(ctx).load(image).into(postimage);
         }
     }
 
