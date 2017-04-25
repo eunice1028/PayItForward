@@ -48,42 +48,48 @@ public class CreateAccountActivity extends AppCompatActivity{
 
                 //all info needed to be stored
                 String email = memailField.getText().toString();
-                String password = mpasswordField.getText().toString();
-                String confirmedPassword = mconfirmPasswordField.getText().toString();
-                String firstname = mfirstnameField.getText().toString();
-                String lastname = mlastnameField.getText().toString();
-
-                if (password.equals(confirmedPassword)) {
-
-                    Firebase mRefChild = mRef.child(email);
-
-                    //Setting each type of information as a new child under the User class
-                    Firebase mRefPassword = mRefChild.child("Password");
-                    mRefPassword.setValue(password);
-
-                    Firebase mRefFirstname = mRefChild.child("First Name");
-                    mRefFirstname.setValue(firstname);
-
-                    Firebase mRefLastname = mRefChild.child("Last Name");
-                    mRefLastname.setValue(lastname);
-
-                    Firebase mRefPoints = mRefChild.child("Points");
-                    mRefPoints.setValue(10);
-
-                    int selectedID = radioSex.getCheckedRadioButtonId();
-                    String gender = ((RadioButton) findViewById(selectedID)).getText().toString();
-
-                    Firebase mRefGender = mRefChild.child("Gender");
-                    mRefGender.setValue(gender);
-
-                    Toast.makeText(CreateAccountActivity.this, "Info saved in firebase", Toast.LENGTH_SHORT).show();
-
-                    //start timeline activity
-                    startActivity(new Intent(CreateAccountActivity.this, TimelineActivity.class));
-
+                String[] separated = email.split("@");
+                if (!separated[1].equals("gmu.edu")) {
+                    Toast.makeText(CreateAccountActivity.this, "Please enter a GMU email", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    Toast.makeText(CreateAccountActivity.this, "Passwords don't match!", Toast.LENGTH_SHORT).show();
+                    email = separated[0];
+                    String password = mpasswordField.getText().toString();
+                    String confirmedPassword = mconfirmPasswordField.getText().toString();
+                    String firstname = mfirstnameField.getText().toString();
+                    String lastname = mlastnameField.getText().toString();
+
+                    if (password.equals(confirmedPassword)) {
+
+                        Firebase mRefChild = mRef.child(email);
+
+                        //Setting each type of information as a new child under the User class
+                        Firebase mRefPassword = mRefChild.child("Password");
+                        mRefPassword.setValue(password);
+
+                        Firebase mRefFirstname = mRefChild.child("First Name");
+                        mRefFirstname.setValue(firstname);
+
+                        Firebase mRefLastname = mRefChild.child("Last Name");
+                        mRefLastname.setValue(lastname);
+
+                        Firebase mRefPoints = mRefChild.child("Points");
+                        mRefPoints.setValue(10);
+
+                        int selectedID = radioSex.getCheckedRadioButtonId();
+                        String gender = ((RadioButton) findViewById(selectedID)).getText().toString();
+
+                        Firebase mRefGender = mRefChild.child("Gender");
+                        mRefGender.setValue(gender);
+
+                        Toast.makeText(CreateAccountActivity.this, "Info saved in firebase", Toast.LENGTH_SHORT).show();
+
+                        //start timeline activity
+                        startActivity(new Intent(CreateAccountActivity.this, TimelineActivity.class));
+
+                    } else {
+                        Toast.makeText(CreateAccountActivity.this, "Passwords don't match!", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
