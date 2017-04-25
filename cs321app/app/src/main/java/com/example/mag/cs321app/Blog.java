@@ -10,6 +10,7 @@ public class Blog {
     private String time;
     private String points;
     private String image;
+    private String userToGetPoints;
 
 
     public Blog(){
@@ -23,6 +24,7 @@ public class Blog {
         this.time = time;
         this.points = points;
         this.image = image;
+        this.userToGetPoints = null;
     }
 
     public String getPoints() {
@@ -65,6 +67,8 @@ public class Blog {
     public void setImage(String image) {
         this.image = image;
     }
+
+    public void setUserToGetPoints(String user) {this.userToGetPoints = user; }
 
 
 
