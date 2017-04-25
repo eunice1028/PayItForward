@@ -35,7 +35,11 @@
 
         <activity
             android:name=".PostActivity"
-            android:label="Create a new post">
+            android:label="Create a new post"/>
+
+        <activity
+            android:name=".AccountPageActivity"
+            android:label="Account Page">
         </activity>
     </application>
 
