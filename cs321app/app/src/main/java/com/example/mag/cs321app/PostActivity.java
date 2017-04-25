@@ -102,7 +102,6 @@ public class PostActivity extends AppCompatActivity {
                     newPost.child("desc").setValue(desc_val);
                     newPost.child("time").setValue(time_val);
                     newPost.child("points").setValue(points_val);
-
                     newPost.child("image").setValue(downloadUrl.toString());
 
                     mProgress.dismiss();
