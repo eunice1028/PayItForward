@@ -30,7 +30,7 @@
             android:paddingStart="10dp"
             android:paddingTop="10dp"
             android:text="Post Title Goes Here"
-            android:textSize="16dp"
+            android:textSize="20dp"
             android:textStyle="bold" />
 
         <TextView
@@ -46,6 +46,17 @@
             android:text="Post Description Goes Here" />
 
         <TextView
+            android:id="@+id/dateword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/firstName"
+            android:layout_below="@+id/lastnameField"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:text="Date needed by:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+        <TextView
             android:id="@+id/post_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -59,8 +70,8 @@
             android:text="Date/Time Needed by Goes Here" />
 
         <TextView
-            android:id="@+id/pointsword"
-            android:layout_width="wrap_content"
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/firstName"
             android:layout_below="@+id/lastnameField"
