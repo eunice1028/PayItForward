@@ -8,6 +8,8 @@ public class Blog {
     private String title;
     private String desc;
     private String time;
+    private String image;
+
 
     public Blog(){
 
@@ -53,7 +55,6 @@ public class Blog {
         this.image = image;
     }
 
-    private String image;
 
 
 }

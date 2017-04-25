@@ -18,7 +18,6 @@ import com.google.firebase.storage.UploadTask;
 
 import android.widget.EditText;
 import android.widget.Button;
-import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 
 import org.w3c.dom.Text;
@@ -63,8 +62,6 @@ public class PostActivity extends AppCompatActivity {
                 galleryIntent.setType("image/*");
                 startActivityForResult(galleryIntent, GALLERY_REQUEST);
             }
-
-
         });
 
         mSubmitButton.setOnClickListener(new View.OnClickListener(){
@@ -78,15 +75,15 @@ public class PostActivity extends AppCompatActivity {
     }
     private void startPosting(){
 
-        mProgress.setMessage("Posting to blog...");
+        mProgress.setMessage("Posting to timeline...");
+        mProgress.show();
 
         final String title_val = mPostTitle.getText().toString().trim();
         final String desc_val = mPostDesc.getText().toString().trim();
         final String time_val = mPostTime.getText().toString().trim();
 
 
-        if(!TextUtils.isEmpty(title_val) && !TextUtils.isEmpty(desc_val) && !TextUtils.isEmpty(time_val) && mImageUri != null){
-            mProgress.show();
+        if(!TextUtils.isEmpty(title_val) && !TextUtils.isEmpty(desc_val) && !TextUtils.isEmpty(time_val)){
             StorageReference filepath = mStorage.child("Blog_Images").child(mImageUri.getLastPathSegment());
             filepath.putFile(mImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
