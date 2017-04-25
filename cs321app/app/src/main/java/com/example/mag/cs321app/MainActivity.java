@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
                     // Toast.makeText(MainActivity.this, "BYE.", Toast.LENGTH_LONG).show();
                 } else if (firebaseAuth.getCurrentUser() != null) {
 
-                    Toast.makeText(MainActivity.this, "HELLO.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "HELLO :D", Toast.LENGTH_LONG).show();
 
                     // create a new Intent and go to the Home page
                     // AccountActivity page is changed

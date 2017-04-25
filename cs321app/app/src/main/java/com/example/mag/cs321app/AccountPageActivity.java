@@ -22,5 +22,5 @@ public class AccountPageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
+    }
 }
