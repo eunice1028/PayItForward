@@ -8,8 +8,11 @@ import android.view.Menu;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.ImageView;
+
+import com.firebase.client.Firebase;
 import com.squareup.picasso.Picasso;
 import android.content.Context;
 
@@ -23,6 +26,7 @@ public class TimelineActivity extends AppCompatActivity {
     private RecyclerView mBlogList;
 
     private DatabaseReference mDatabase;
+    private Button mAccountButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +35,9 @@ public class TimelineActivity extends AppCompatActivity {
         setContentView(R.layout.timeline_main);
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Blog");
 
+        mAccountButton = (Button) findViewById(R.id.account_button);
+
+
         mBlogList = (RecyclerView) findViewById(R.id.blog_list);
         mBlogList.setHasFixedSize(true);
         // view from newest to oldest
@@ -38,6 +45,16 @@ public class TimelineActivity extends AppCompatActivity {
         llm.setReverseLayout(true);
         llm.setStackFromEnd(true);
         mBlogList.setLayoutManager(llm);
+
+        mAccountButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                startActivity(new Intent(TimelineActivity.this, AccountPageActivity.class));
+
+            }
+        });
     }
 
     @Override
@@ -123,4 +140,9 @@ public class TimelineActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
+
+
 }
+
