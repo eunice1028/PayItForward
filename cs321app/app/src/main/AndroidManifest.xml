@@ -39,7 +39,7 @@
 
         <activity
             android:name=".AccountPageActivity"
-            android:label="Account Page">
+            android:label="Account Info">
         </activity>
     </application>
 

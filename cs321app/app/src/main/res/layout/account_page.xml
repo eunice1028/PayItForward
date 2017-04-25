@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
         android:layout_marginTop="10dp"
-        android:text="name goes here"
+        android:text="Shia LaBeouf"
         android:textSize="18dp" />
 
     <TextView
@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
         android:layout_marginTop="10dp"
-        android:text="gender goes here"
+        android:text="Male"
         android:textSize="18dp" />
 
     <TextView
@@ -54,7 +54,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
         android:layout_marginTop="10dp"
-        android:text="points goes here"
+        android:text="10"
         android:textSize="18dp" />
 
     <TextView
@@ -72,7 +72,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
         android:layout_marginTop="10dp"
-        android:text="email goes here"
+        android:text="slabeouf@gmu.edu"
         android:textSize="18dp" />
 
 </LinearLayout>
