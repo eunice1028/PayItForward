@@ -4,13 +4,13 @@ package com.example.mag.cs321app;
  * Created by smashking on 4/25/17.
  */
 
-public class User {
+public class UserData {
     private String firstName;
     private String lastName;
     private String gender;
     private int points;
 
-    public User(String firstName, String lastName, String gender){
+    public UserData(String firstName, String lastName, String gender){
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
