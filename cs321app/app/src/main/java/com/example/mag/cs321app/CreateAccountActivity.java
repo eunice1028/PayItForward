@@ -50,7 +50,8 @@ public class CreateAccountActivity extends AppCompatActivity{
                 String email = memailField.getText().toString();
                 String[] separated = email.split("@");
                 if (!separated[1].equals("gmu.edu")) {
-                    Toast.makeText(CreateAccountActivity.this, "Please enter a GMU email", Toast.LENGTH_SHORT).show();
+                    String text = "Please enter a GMU email";
+                    Toast.makeText(CreateAccountActivity.this, text, Toast.LENGTH_SHORT).show();
                 }
                 else {
                     email = separated[0];
